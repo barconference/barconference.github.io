@@ -9,8 +9,12 @@
     var dataLayer = window.dataLayer || [];
     dataLayer.push({
         'call': {
-            'id': '1', // todo: replace id with timestamp or uuid
-            'revenue': '20'
+            'product': {
+                'name': 'foo'
+            },
+            'action': {
+                'id': '1' // todo: replace id with timestamp or uuid
+            }
         }
     });
 </script>
