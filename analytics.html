@@ -17,7 +17,19 @@
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         (function () {
-            ga('create', 'UA-82113620-2', 'auto');
+            var trackingId = 'UA-82113620-2';
+            var isProduction = function (debugMode, pageHostname) {
+                var productionHostname = 'barconference.github.io';
+                if ((pageHostname === productionHostname) && !debugMode) {
+                    return true;
+                }
+                return false;
+            };
+            if (isProduction(localStorage.getItem("debugMode"), location.hostname)) {
+                trackingId = 'UA-82113620-1';
+            }
+            console.log(trackingId);
+            ga('create', trackingId, 'auto');
             ga('send', 'pageview');
         })()
     </script>
